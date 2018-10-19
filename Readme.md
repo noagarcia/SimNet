@@ -26,7 +26,6 @@ In our experiments, we use the following image retrieval datasets:
 - [LandmarksExtra]()
 - [LandmarksExtra500]()
 - [Landmarks]()
-- [PCA weights]()
 
 2. In ```load_img_data.m``` file, set path to the training data accordingly.
 
@@ -38,21 +37,15 @@ Alternatively, to use your own data, create the ```images``` struct with the fie
 - ```images.set [Nx1 double]``` N dimensional vector with the set of each pair, with 1 being training set and 2 being validation set.
 - ```images.cosines [4-D single]``` (1,1,1,N) array with the cosine similarity between the pair of feature vectors.
 
-To compute the PCA weights use the following [code](https://github.com/gtolias/rmac).
-
 ### Test
 For Oxford and Paris datasets:
-1. Download pre-computed RMAC features:
-- [Oxford]()
-- [Paris]()
-
-2. Save datasets as:
+1. Save datasets as:
 - ```datasets/{ox,pa}/Images``` with the dataset images (without queries)
 - ```datasets/{ox,pa}/Queries``` with the dataset queries (cropped and renamed with their corresponding id).
 
-3. Run ```test.m```
+2. Run ```test.m```
 
-4. Accuracy can be measured with the algorithms provided by the datasets.
+3. Accuracy can be measured with the algorithms provided by the datasets.
 
 ## Results
 
