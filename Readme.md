@@ -2,7 +2,7 @@
 
 Matlab code for the paper "Learning Non-Metric Visual Similarity for Image Retrieval", in which a similarity network is proposed to estimate a visual similarity score for ranking images in visual retrieval problems.
 
-![info](https://github.com/noagarcia/SemArt/blob/master/info/SimNet.png?raw=true)
+![info](https://github.com/noagarcia/SimNet/blob/master/info/SimNet.png?raw=true)
 
 
 ## Prerequisits
