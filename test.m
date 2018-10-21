@@ -5,7 +5,7 @@ use_gpu                     = true;                     % true/false to GPU
 L                           = 3;                        % RMAC num of levels
 
 % Import data
-dataset                     = 'ox';                     % choose between
+dataset                     = 'pa';                     % choose between
                                                         % 'ox' and 'pa'
 
 pathResult = fullfile('results', dataset);              % path to save the

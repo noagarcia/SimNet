@@ -1,13 +1,13 @@
 % Parameters
 model_name                      = 'SimNet_delta02_landmarksextra';
 delta                           = 0.2;      % delta to learn similarity
-do_warmup                       = true;     % true to compute&use warm up weights
+do_warmup                       = false;     % true to compute&use warm up weights
 use_warmup                      = true;     % true to use warm up weights
 
 trainOpts.gpus                  = [1];      % number of GPUs for training
-trainOpts.batchSize             = 512;      % batch size
-trainOpts.learningRate          = 0.005;    % learning rate
-trainOpts.numEpochs             = 75;       % number of epochs
+trainOpts.batchSize             = 100;      % batch size
+trainOpts.learningRate          = 0.001;    % learning rate
+trainOpts.numEpochs             = 100;      % number of epochs
 trainOpts.errorFunction         = 'none' ;
 
 % ***** WARM-UP WEIGHTS *****
@@ -49,8 +49,8 @@ if do_warmup
     trainOpts.numEpochs = 45;
 elseif use_warmup
     % load previous weights
-    simnet = load('models/DeepCosine.mat');
-    trainOpts.numEpochs = 45;
+    simnet = load('models/warmup_weights.mat');
+    trainOpts.numEpochs = 100;
 else
     % ranom weights
     simnet = init_simnet();
