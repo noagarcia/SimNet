@@ -23,9 +23,7 @@ In our experiments, we use the following image retrieval datasets:
 
 ### Training
 1. Download training data from:
-- [LandmarksExtra]()
-- [LandmarksExtra500]()
-- [Landmarks]()
+- [LandmarksExtra](http://noagarciad.com/data/SimNet/LandmarksExtra_IMDB_1024.mat)
 
 2. In ```load_img_data.m``` file, set path to the training data accordingly.
 
@@ -46,6 +44,10 @@ For Oxford and Paris datasets:
 2. Run ```test.m```
 
 3. Accuracy can be measured with the algorithms provided by the datasets.
+
+Download pre-trained models from:
+- [SimNet](http://noagarciad.com/data/SimNet/SimNet_delta02_landmarksextra.mat)
+- [SimNet*](http://noagarciad.com/data/SimNet/SimNetPlus_delta08_landmarksextra.mat)
 
 ## Results
 

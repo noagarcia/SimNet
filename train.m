@@ -3,11 +3,12 @@ model_name                      = 'SimNet_delta02_landmarksextra';
 delta                           = 0.2;      % delta to learn similarity
 do_warmup                       = false;     % true to compute&use warm up weights
 use_warmup                      = true;     % true to use warm up weights
+dim_feat                        = 512;
 
 trainOpts.gpus                  = [1];      % number of GPUs for training
 trainOpts.batchSize             = 100;      % batch size
 trainOpts.learningRate          = 0.001;    % learning rate
-trainOpts.numEpochs             = 100;      % number of epochs
+trainOpts.numEpochs             = 55;      % number of epochs
 trainOpts.errorFunction         = 'none' ;
 
 % ***** WARM-UP WEIGHTS *****
@@ -16,11 +17,11 @@ if do_warmup
 
     % Create some random vectors
     fprintf('Generating random vectos...');
-    imdb = imdb_random_vectors(512, 1e6);
+    imdb = imdb_random_vectors(dim_feat, 0.5e6);
     fprintf('...Done\n');
     
     % Initialize the network
-    simnet = init_simnet_simplenn();
+    simnet = init_simnet_simplenn(dim_feat);
     simnet = addCustomLossLayer(simnet, @l1LossForward, @l1LossBackward);
     
     % Train
@@ -34,7 +35,7 @@ if do_warmup
     if trainOpts.gpus > 0
         simnet = vl_simplenn_move(simnet, 'cpu');
     end
-    save('models/DeepCosine.mat', '-struct', 'simnet');
+    save('models/warmup_weights.mat', '-struct', 'simnet');
     
 end
 
@@ -46,7 +47,7 @@ clear imdb;
 % Initialize the network
 if do_warmup
     % simnet is alredy computed
-    trainOpts.numEpochs = 45;
+    trainOpts.numEpochs = 100;
 elseif use_warmup
     % load previous weights
     simnet = load('models/warmup_weights.mat');
